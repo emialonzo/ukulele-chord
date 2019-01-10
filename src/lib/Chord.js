@@ -91,15 +91,33 @@ class Chord extends React.Component {
         )
     };
 
-    buildDiagram = (nut = true) => {
+    normalizeFreset = (fretset = []) => {
+        const max = Math.max(...fretset);
+
+        if (max <= 4) {
+            return {
+                fret: null,
+                fretset: fretset
+            };
+        }
+
+        const min = Math.min(...fretset.filter(number => number !== 0));
+        return {
+            fret: `${min}º`,
+            fretset: fretset.map(number => number === 0 ? 0 : number - min + 1)
+        }
+    };
+
+    buildDiagram = (chordName = null, fretset = []) => {
+        const normalizedFretset = this.normalizeFreset(fretset);
         return (
             <svg id="svg153" width="104" height="118" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 118">
                 {this.defs()}
                 {this.frets()}
-                {this.strings(false)}
-                {this.fingers([3,3,2,1])}
-                {this.fretNumber('4º')}
-                {this.chordName('C major')}
+                {this.strings(normalizedFretset.fret === null)}
+                {this.fingers(normalizedFretset.fretset)}
+                {this.fretNumber(normalizedFretset.fret)}
+                {this.chordName(chordName)}
             </svg>
         )
     };
@@ -110,7 +128,7 @@ class Chord extends React.Component {
                 <h3>Tilte of a chord</h3>
                 <div ref={this.chordRef}>Look, I'm the chord per se!</div>
                 <div ref={this.gridRef}/>
-                {this.buildDiagram()}
+                {this.buildDiagram('G#', [6,4,3,5])}
             </div>
         );
     }
