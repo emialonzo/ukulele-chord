@@ -58,7 +58,7 @@ class Chord extends React.Component {
     };
 
     fingers = (fretset = []) => {
-        const positions = {'1': 37.5, '2': 53.5, '3': 69.5, '4': 85.5};
+        const positions = {1: 37.5, 2: 53.5, 3: 69.5, 4: 85.5};
 
         return (Array.isArray(fretset) && fretset.length > 0) && [
             fretset[0] !== 0 && <circle key='1' id="finger-string1" cx="71.5" cy={positions[fretset[0]]} r="5.5" fill="#424242"/>,
@@ -123,14 +123,8 @@ class Chord extends React.Component {
     };
 
     render() {
-        return (
-            <div>
-                <h3>Tilte of a chord</h3>
-                <div ref={this.chordRef}>Look, I'm the chord per se!</div>
-                <div ref={this.gridRef}/>
-                {this.buildDiagram('G#', [6,4,3,5])}
-            </div>
-        );
+        return this.buildDiagram(this.props.name, this.props.fretset);
     }
 }
+
 export default Chord;
