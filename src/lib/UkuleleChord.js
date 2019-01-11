@@ -24,7 +24,7 @@ class UkuleleChord extends React.Component {
         );
     };
 
-    frets = () => {
+    fretboard = () => {
         return [
             <path key="1" id="fret1" d="m32 45v1h40v-1z" fill="#a6a6a6"/>,
             <path key="2" id="fret2" d="m32 61v1h40v-1z" fill="#a6a6a6"/>,
@@ -108,7 +108,7 @@ class UkuleleChord extends React.Component {
         return (
             <svg id="svg153" width="104" height="118" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 118">
                 {this.defs()}
-                {this.frets()}
+                {this.fretboard()}
                 {this.strings(normalizedFretset.fret === null)}
                 {this.fingers(normalizedFretset.fretset)}
                 {this.fretNumber(normalizedFretset.fret)}
