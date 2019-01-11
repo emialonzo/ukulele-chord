@@ -1,11 +1,6 @@
 import React from 'react';
 
 class Chord extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     defs = () => {
         return (
             <defs id="defs49">
