@@ -33,8 +33,8 @@ class UkuleleChord extends React.Component {
         ];
     };
 
-    strings = (nut = true) => {
-        if (nut) {
+    strings = (fromNut = true) => {
+        if (fromNut) {
             return [
                 <path key='0' id="nut" d="m33.5 27c-0.83 0-1.5 0.67-1.5 1.5v1.5h40v-1.5c0-0.83-0.68-1.5-1.5-1.5z" fill="#424242"/>,
                 <path key='4' id="string4-nut" d="m32 30v80h1v-80z" fill="url(#linearGradient1012)"/>,
@@ -86,39 +86,39 @@ class UkuleleChord extends React.Component {
         )
     };
 
-    normalizeFreset = (fretset = []) => {
-        const max = Math.max(...fretset);
+    normalizeFrets = (frets = []) => {
+        const max = Math.max(...frets);
 
         if (max <= 4) {
             return {
-                fret: null,
-                fretset: fretset
+                firstFret: null,
+                frets: frets
             };
         }
 
-        const min = Math.min(...fretset.filter(number => number !== 0));
+        const min = Math.min(...frets.filter(number => number !== 0));
         return {
-            fret: `${min}º`,
-            fretset: fretset.map(number => number === 0 ? 0 : number - min + 1)
+            firstFret: `${min}º`,
+            frets: frets.map(number => number === 0 ? 0 : number - min + 1)
         }
     };
 
-    buildDiagram = (chordName = null, fretset = []) => {
-        const normalizedFretset = this.normalizeFreset(fretset);
+    buildDiagram = (chordName = null, frets = []) => {
+        const normalizedFrets = this.normalizeFrets(frets);
         return (
             <svg id="svg153" width="104" height="118" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 118">
                 {this.defs()}
                 {this.fretboard()}
-                {this.strings(normalizedFretset.fret === null)}
-                {this.fingers(normalizedFretset.fretset)}
-                {this.firstFret(normalizedFretset.fret)}
+                {this.strings(normalizedFrets.firstFret === null)}
+                {this.fingers(normalizedFrets.frets)}
+                {this.firstFret(normalizedFrets.firstFret)}
                 {this.chordName(chordName)}
             </svg>
         )
     };
 
     render() {
-        return this.buildDiagram(this.props.name, this.props.fretset);
+        return this.buildDiagram(this.props.name, this.props.frets);
     }
 }
 
