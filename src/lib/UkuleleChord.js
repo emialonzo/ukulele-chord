@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Chord extends React.Component {
+class UkuleleChord extends React.Component {
     defs = () => {
         return (
             <defs id="defs49">
@@ -122,4 +122,4 @@ class Chord extends React.Component {
     }
 }
 
-export default Chord;
+export default UkuleleChord;

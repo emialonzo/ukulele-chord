@@ -1,2 +1,2 @@
-import Chord from './Chord';
-export { Chord };
+import UkuleleChord from './UkuleleChord';
+export default UkuleleChord;
