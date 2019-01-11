@@ -63,7 +63,7 @@ class UkuleleChord extends React.Component {
         ]
     };
 
-    fretNumber = (fretNumber = null) => {
+    firstFret = (fretNumber = null) => {
         return fretNumber && (
             <text id="fret" x="24.9464" y="41.382812" fill="#424242" fontFamily="sans-serif" fontSize="9.733px"
                   letterSpacing="0px" strokeWidth=".24332" text-align="end" textAnchor="end" wordSpacing="0px"
@@ -111,7 +111,7 @@ class UkuleleChord extends React.Component {
                 {this.fretboard()}
                 {this.strings(normalizedFretset.fret === null)}
                 {this.fingers(normalizedFretset.fretset)}
-                {this.fretNumber(normalizedFretset.fret)}
+                {this.firstFret(normalizedFretset.fret)}
                 {this.chordName(chordName)}
             </svg>
         )
