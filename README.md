@@ -10,12 +10,18 @@ Run the following command:
     import UkuleleChord from './lib/UkuleleChord';
     
 ## Examples
-There are only two required arguments: `name` is the name of the chord per ser. And `frets` is the numeric representation of the chord as an `array` of numbers.
+There are only two required arguments:
+* `name`: the name of the chord per ser. C, F major, Emin(maj7) you name it.
+* `frets`: is the numeric representation of the chord as an `array` of 4 numbers. Use `0` to represent no pressed string.
+
 ```jsx
 <UkuleleChord name="C" frets={[0, 0, 0, 3]}/>
 ```
-
 ![C major](./chords/c-major.svg)
+
+----
+
+There is no need to calculate the initial chord's fret. Just set the real fret position and let the component do the rest:
 
 ```jsx
 <UkuleleChord name="Db7+" frets={[6, 5, 4, 3]}/>
