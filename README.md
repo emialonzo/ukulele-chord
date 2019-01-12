@@ -12,19 +12,19 @@ Run the following command:
 ## Examples
 There are only two required arguments: `name` is the name of the chord per ser. And `frets` is the numeric representation of the chord as an `array` of numbers.
 ```jsx
-<UkuleleChord name="C" frets={[3, 0, 0, 0]}/>
+<UkuleleChord name="C" frets={[0, 0, 0, 3]}/>
 ```
 
 ![C major](./chords/c-major.svg)
 
 ```jsx
-<UkuleleChord name="Db7+" frets={[3, 4, 5, 6]}/>
+<UkuleleChord name="Db7+" frets={[6, 5, 4, 3]}/>
 ```
 
 ![Db augmented seventh](./chords/d-b-augmented-seventh.svg)
 
 ```jsx
-<UkuleleChord name="B7" frets={[0, 7, 6, 8]}/>
+<UkuleleChord name="B7" frets={[8, 6, 7, 0]}/>
 ```
 
 ![B seventh](./chords/b-seventh.svg)
