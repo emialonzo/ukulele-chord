@@ -56,10 +56,10 @@ class UkuleleChord extends React.Component {
         const positions = {1: 37.5, 2: 53.5, 3: 69.5, 4: 85.5};
 
         return (Array.isArray(fretset) && fretset.length > 0) && [
-            fretset[0] !== 0 && <circle key='1' id="finger-string1" cx="71.5" cy={positions[fretset[0]]} r="5.5" fill="#424242"/>,
-            fretset[1] !== 0 && <circle key='2' id="finger-string2" cx="58.5" cy={positions[fretset[1]]} r="5.5" fill="#424242"/>,
-            fretset[2] !== 0 && <circle key='3' id="finger-string3" cx="45.5" cy={positions[fretset[2]]} r="5.5" fill="#424242"/>,
-            fretset[3] !== 0 && <circle key='4' id="finger-string4" cx="32.5" cy={positions[fretset[3]]} r="5.5" fill="#424242"/>
+            fretset[3] !== 0 && <circle key='1' id="finger-string1" cx="71.5" cy={positions[fretset[3]]} r="5.5" fill="#424242"/>,
+            fretset[2] !== 0 && <circle key='2' id="finger-string2" cx="58.5" cy={positions[fretset[2]]} r="5.5" fill="#424242"/>,
+            fretset[1] !== 0 && <circle key='3' id="finger-string3" cx="45.5" cy={positions[fretset[1]]} r="5.5" fill="#424242"/>,
+            fretset[0] !== 0 && <circle key='4' id="finger-string4" cx="32.5" cy={positions[fretset[0]]} r="5.5" fill="#424242"/>
         ]
     };
 
