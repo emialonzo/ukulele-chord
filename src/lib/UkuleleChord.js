@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Chord extends React.Component {
+class UkuleleChord extends React.Component {
     defs = () => {
         return (
             <defs id="defs49">
@@ -24,7 +24,7 @@ class Chord extends React.Component {
         );
     };
 
-    frets = () => {
+    fretboard = () => {
         return [
             <path key="1" id="fret1" d="m32 45v1h40v-1z" fill="#a6a6a6"/>,
             <path key="2" id="fret2" d="m32 61v1h40v-1z" fill="#a6a6a6"/>,
@@ -33,8 +33,8 @@ class Chord extends React.Component {
         ];
     };
 
-    strings = (nut = true) => {
-        if (nut) {
+    strings = (fromNut = true) => {
+        if (fromNut) {
             return [
                 <path key='0' id="nut" d="m33.5 27c-0.83 0-1.5 0.67-1.5 1.5v1.5h40v-1.5c0-0.83-0.68-1.5-1.5-1.5z" fill="#424242"/>,
                 <path key='4' id="string4-nut" d="m32 30v80h1v-80z" fill="url(#linearGradient1012)"/>,
@@ -56,14 +56,14 @@ class Chord extends React.Component {
         const positions = {1: 37.5, 2: 53.5, 3: 69.5, 4: 85.5};
 
         return (Array.isArray(fretset) && fretset.length > 0) && [
-            fretset[0] !== 0 && <circle key='1' id="finger-string1" cx="71.5" cy={positions[fretset[0]]} r="5.5" fill="#424242"/>,
-            fretset[1] !== 0 && <circle key='2' id="finger-string2" cx="58.5" cy={positions[fretset[1]]} r="5.5" fill="#424242"/>,
-            fretset[2] !== 0 && <circle key='3' id="finger-string3" cx="45.5" cy={positions[fretset[2]]} r="5.5" fill="#424242"/>,
-            fretset[3] !== 0 && <circle key='4' id="finger-string4" cx="32.5" cy={positions[fretset[3]]} r="5.5" fill="#424242"/>
+            fretset[3] !== 0 && <circle key='1' id="finger-string1" cx="71.5" cy={positions[fretset[3]]} r="5.5" fill="#424242"/>,
+            fretset[2] !== 0 && <circle key='2' id="finger-string2" cx="58.5" cy={positions[fretset[2]]} r="5.5" fill="#424242"/>,
+            fretset[1] !== 0 && <circle key='3' id="finger-string3" cx="45.5" cy={positions[fretset[1]]} r="5.5" fill="#424242"/>,
+            fretset[0] !== 0 && <circle key='4' id="finger-string4" cx="32.5" cy={positions[fretset[0]]} r="5.5" fill="#424242"/>
         ]
     };
 
-    fretNumber = (fretNumber = null) => {
+    firstFret = (fretNumber = null) => {
         return fretNumber && (
             <text id="fret" x="24.9464" y="41.382812" fill="#424242" fontFamily="sans-serif" fontSize="9.733px"
                   letterSpacing="0px" strokeWidth=".24332" text-align="end" textAnchor="end" wordSpacing="0px"
@@ -86,40 +86,40 @@ class Chord extends React.Component {
         )
     };
 
-    normalizeFreset = (fretset = []) => {
-        const max = Math.max(...fretset);
+    normalizeFrets = (frets = []) => {
+        const max = Math.max(...frets);
 
         if (max <= 4) {
             return {
-                fret: null,
-                fretset: fretset
+                firstFret: null,
+                frets: frets
             };
         }
 
-        const min = Math.min(...fretset.filter(number => number !== 0));
+        const min = Math.min(...frets.filter(number => number !== 0));
         return {
-            fret: `${min}º`,
-            fretset: fretset.map(number => number === 0 ? 0 : number - min + 1)
+            firstFret: `${min}º`,
+            frets: frets.map(number => number === 0 ? 0 : number - min + 1)
         }
     };
 
-    buildDiagram = (chordName = null, fretset = []) => {
-        const normalizedFretset = this.normalizeFreset(fretset);
+    buildDiagram = (chordName = null, frets = []) => {
+        const normalizedFrets = this.normalizeFrets(frets);
         return (
             <svg id="svg153" width="104" height="118" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 118">
                 {this.defs()}
-                {this.frets()}
-                {this.strings(normalizedFretset.fret === null)}
-                {this.fingers(normalizedFretset.fretset)}
-                {this.fretNumber(normalizedFretset.fret)}
+                {this.fretboard()}
+                {this.strings(normalizedFrets.firstFret === null)}
+                {this.fingers(normalizedFrets.frets)}
+                {this.firstFret(normalizedFrets.firstFret)}
                 {this.chordName(chordName)}
             </svg>
         )
     };
 
     render() {
-        return this.buildDiagram(this.props.name, this.props.fretset);
+        return this.buildDiagram(this.props.name, this.props.frets);
     }
 }
 
-export default Chord;
+export default UkuleleChord;

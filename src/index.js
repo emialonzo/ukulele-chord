@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Chord from './lib/Chord';
+import UkuleleChord from './lib/UkuleleChord';
 
 ReactDOM.render(
     <div>
-        <Chord name="C"  fretset={[3,0,0,0]}/>
-        <Chord name="Am" fretset={[0,0,0,2]}/>
-        <Chord name="G#" fretset={[6,4,3,5]}/>
+        <UkuleleChord name="C" frets={[0, 0, 0, 3]}/>
+        <UkuleleChord name="Db7+" frets={[6, 5, 4, 3]}/>
+        <UkuleleChord name="B7" frets={[8, 6, 7, 0]}/>
     </div>,
-    document.querySelector('#root'));
+    document.querySelector('#root')
+);
