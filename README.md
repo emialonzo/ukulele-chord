@@ -1,5 +1,7 @@
 # ukulele-chord
-A React component that renders music chord diagrams
+A React component that renders ukulele chord diagrams.
+
+It expects you to have the chord name and its numerical representation. See below.
 
 ## Installation
 Run the following command:
