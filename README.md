@@ -34,7 +34,7 @@ There are only two required arguments:
 ```jsx
 <UkuleleChord name="C" frets={[0, 0, 0, 3]}/>
 ```
-![C major](./chords/c-major.svg)
+![C major](https://raw.githubusercontent.com/ukulelecifras/ukulele-chord/master/chords/c-major.svg?sanitize=true)
 
 ----
 
@@ -44,12 +44,12 @@ There is no need to calculate the initial chord's fret. Just set the real fret p
 <UkuleleChord name="Db7+" frets={[6, 5, 4, 3]}/>
 ```
 
-![Db augmented seventh](./chords/d-b-augmented-seventh.svg)
+![Db augmented seventh](https://raw.githubusercontent.com/ukulelecifras/ukulele-chord/master/chords/d-b-augmented-seventh.svg?sanitize=true)
 
 ```jsx
 <UkuleleChord name="B7" frets={[8, 6, 7, 0]}/>
 ```
 
-![B seventh](./chords/b-seventh.svg)
+![B seventh](https://raw.githubusercontent.com/ukulelecifras/ukulele-chord/master/chords/b-seventh.svg?sanitize=true)
 
 
