@@ -10,7 +10,7 @@ Run the following command:
     import UkuleleChord from './lib/UkuleleChord';
     
 ## Examples
-
+There are only two required arguments: `name` is the name of the chord per ser. And `frets` is the numeric representation of the chord as an `array` of numbers.
 ```jsx
 <UkuleleChord name="C" frets={[3, 0, 0, 0]}/>
 ```
